@@ -89,4 +89,4 @@ let g:syntastic_check_on_wq = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 
 "Set smart indent"
-:set smartindent
+:filetype indent on
