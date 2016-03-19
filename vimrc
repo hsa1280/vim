@@ -2,8 +2,10 @@ syntax on
 "Set search highlight
 "set hlsearch
 "Set tab indent
-set shiftwidth=1
-set tabstop=1
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
 "Shortcuts
 "map <S-Right> :tabn<CR>
 "map <S-Left>  :tabp<CR>
@@ -27,7 +29,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "Set ignore files"
 set wildignore+=*target/*,*node_modules/*  
-"test comment"
+"set ctrp max files"
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 
 "VUNDLE"
@@ -55,11 +59,16 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'file:///home/gmarik/path/to/plugin'
 "YouCompleteMe"
 Plugin 'Valloric/YouCompleteMe'
+"Show git changed file"
+Plugin 'airblade/vim-gitgutter'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 Plugin 'user/L9', {'name': 'newL9'}
+
+"git changed files
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,17 +85,27 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
-"Syntax checking"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-
 "Set smart indent"
 :filetype indent on
+
+"au BufNewFile,BufRead *.handlebars set file type=html
+
+"set color theme"
+"color dracula
+
+"set git differ time
+set updatetime=250
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+
